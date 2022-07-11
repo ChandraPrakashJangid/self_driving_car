@@ -94,6 +94,15 @@ class Dqn():
                     'optimizer':self.optimizer.state_dict,             
                     }, 'last_brain.pth')
     
+    def load(self):
+        if os.path.isfile('last_brain.pth'):
+            print("=> loading check 1")
+            checkpoint = torch.load('last_brain.pth')
+            self.model.load_state_dict(checkpoint['state_dict'])
+            self.optimizer.load_state_dict(checkpoint['optimizer'])
+            print("=> loading check Done ")
+        else:
+            print("no check found")
         
         
     
